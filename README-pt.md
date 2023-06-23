@@ -1,3 +1,5 @@
+*[read in english](https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/README.md)*
+
 # GitHub Insights - Explorando o Ecossistema dos Desenvolvedores Moçambicanos
 
 <div align='center'>
