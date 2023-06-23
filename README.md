@@ -3,8 +3,8 @@
 # GitHub Insights - Exploring the Mozambican Developer Ecosystem
 
 <div align='center'>
-<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/MozFlag.png?raw=true" width="450" height="300">
-<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/github-logo.png?raw=true" width="450" height="300">
+<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/MozFlag.png?raw=true" width="400" height="300">
+<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/github-logo.png?raw=true" width="400" height="300">
 </div>
 
 This project aims to perform data analysis based on publicly available information from the GitHub API, focusing on users in Mozambique. We seek to extract valuable insights from user data, their repositories, and starred repositories to understand patterns, identify development trends, and explore the dynamics of the developer community in Mozambique.
