@@ -1,3 +1,5 @@
+*[read in english](https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/README.md)*
+
 Esta pasta contém os dados do projeto, organizados em três subpastas: "raw", "processed" e "results". Abaixo está uma descrição detalhada de cada subpasta e dos arquivos dentro delas. 
 
 Nota: É importante atualizar esta pasta sempre que novos resultados ou visualizações forem gerados durante o projeto.
