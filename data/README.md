@@ -1,3 +1,5 @@
+*[leia em português](https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/README-pt.md)*
+
 This folder contains the project data, organized into three subfolders: "raw", "processed", and "results". Below is a detailed description of each subfolder and the files within them.
 
 Note: It is important to update this folder whenever new results or visualizations are generated during the project.
