@@ -75,7 +75,7 @@ It is important to acknowledge the limitations of the project in order to interp
 
 4. **Analysis Biases**: Data analysis is subject to inherent biases, such as selection biases or sampling biases. For example, the choice of specific repositories or contributors for analysis may introduce biases in interpreting the results. It is important to be aware of these biases and interpret the results with caution.
 
-5. **Localization**: It is necessary to take into account that the analyses performed in this project are restricted to users from Mozambique who have registered their location on GitHub. There may be other Mozambican users with outdated or missing location information, which may impact the representativeness of the obtained results.
+5. **Location**: It is necessary to take into account that the analyses performed in this project are restricted to users from Mozambique who have registered their location on GitHub. There may be other Mozambican users with outdated or missing location information, which may impact the representativeness of the obtained results.
 
 
 ## Prerequisites
