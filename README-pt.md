@@ -99,14 +99,18 @@ Antes de executar o projeto, verifique se você atende aos seguintes pré-requis
 
 Se você deseja contribuir para este projeto, fique à vontade para abrir uma issue com suas sugestões ou envie um pull request com suas alterações. Sua contribuição será muito apreciada!
 
+<div align='center'>
+<img src="https://media3.giphy.com/media/3oriePyO5ePbJWMHPW/giphy.gif?cid=ecf05e47550izrqszztx5yqt8ft70mevtzbjst0d358qhwgu&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%" height="100%">
+</div>
+
+---
+
 ## Feito com
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
-
----
 
 ## Autor
 - [Hérco ZauZau](https://github.com/HercoZauZau)

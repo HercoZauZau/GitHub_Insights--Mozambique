@@ -100,6 +100,12 @@ Before running the project, make sure you meet the following prerequisites:
 
 If you wish to contribute to this project, feel free to open an issue with your suggestions or submit a pull request with your changes. Your contribution will be greatly appreciated!
 
+<div align='center'>
+<img src="https://media3.giphy.com/media/3oriePyO5ePbJWMHPW/giphy.gif?cid=ecf05e47550izrqszztx5yqt8ft70mevtzbjst0d358qhwgu&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%" height="100%">
+</div>
+
+---
+
 ## Made with
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
@@ -107,7 +113,6 @@ If you wish to contribute to this project, feel free to open an issue with your 
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 
----
 
 ## Author
 - [Hérco ZauZau](https://github.com/HercoZauZau)
