@@ -3,9 +3,9 @@
 # GitHub Insights - Explorando o Ecossistema dos Desenvolvedores Moçambicanos
 
 <div align='center'>
-<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/MozFlag.png?raw=true" width="400" height="300">
-<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/github-logo.png?raw=true" width="400" height="300">
-</div>
+<img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/assets/img/MozFlag.png?raw=true" width="100%" height="100%">
+
+----
 
 Este projeto tem como objetivo realizar análises de dados com base nas informações públicas disponibilizadas pela API do GitHub, focando nos usuários em Moçambique. Buscamos extrair insights valiosos dos dados dos usuários, seus repositórios e repositórios curtidos, a fim de compreender padrões, identificar tendências de desenvolvimento e explorar a dinâmica da comunidade de desenvolvedores em Moçambique.
 
