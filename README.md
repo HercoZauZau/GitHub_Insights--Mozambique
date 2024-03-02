@@ -43,7 +43,7 @@ Some examples of obtained insights include:
   
 | Distribution of users by province  |
 |------------|
-| <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2024_02/number_of_registered_users_per_province.png?raw=true" width="800"> |
+| <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2023_06/number_of_registered_users_per_province.png?raw=true" width="800"> |
 
 </div>
 
