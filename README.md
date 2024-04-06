@@ -96,6 +96,17 @@ Before running the project, make sure you meet the following prerequisites:
     - dotenv
     - wordcloud
 
+## Execution Sequence:
+
+1. data_collect/get_users_ids.ipynb
+2. cleaning_and_structuring/structure_ids.ipynb
+3. data_collect/get_users_data.ipynb
+4. data_collect/get_repos_data.ipynb
+5. data_collect/get_starred_data.ipynb
+6. visualization/users_insights.ipynb
+7. visualization/repos_insights.ipynb
+8. visualization/starred_insights.ipynb
+
 ## Contribution
 
 If you wish to contribute to this project, feel free to open an issue with your suggestions or submit a pull request with your changes. Your contribution will be greatly appreciated!
