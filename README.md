@@ -98,14 +98,17 @@ Before running the project, make sure you meet the following prerequisites:
 
 ## Execution Sequence:
 
-1. data_collect/get_users_ids.ipynb
-2. cleaning_and_structuring/structure_ids.ipynb
-3. data_collect/get_users_data.ipynb
-4. data_collect/get_repos_data.ipynb
-5. data_collect/get_starred_data.ipynb
-6. visualization/users_insights.ipynb
-7. visualization/repos_insights.ipynb
-8. visualization/starred_insights.ipynb
+| Step  | Description                         | Notebook Path                               |
+|----------|-------------------------------------|---------------------------------------------|
+| 1        | Data Collection: Get Users IDs      | data_collect/get_users_ids.ipynb            |
+| 2        | Cleaning and Structuring: Structure IDs | cleaning_and_structuring/structure_ids.ipynb |
+| 3        | Data Collection: Get Users Data     | data_collect/get_users_data.ipynb           |
+| 4        | Data Collection: Get Repos Data     | data_collect/get_repos_data.ipynb           |
+| 5        | Data Collection: Get Starred Data   | data_collect/get_starred_data.ipynb         |
+| 6        | Visualization: Users Insights       | visualization/users_insights.ipynb          |
+| 7        | Visualization: Repos Insights       | visualization/repos_insights.ipynb          |
+| 8        | Visualization: Starred Insights     | visualization/starred_insights.ipynb        |
+
 
 ## Contribution
 

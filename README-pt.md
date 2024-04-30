@@ -97,14 +97,17 @@ Antes de executar o projeto, verifique se você atende aos seguintes pré-requis
 
 ## Sequência de Execução:
 
-1. data_collect/get_users_ids.ipynb
-2. cleaning_and_structuring/structure_ids.ipynb
-3. data_collect/get_users_data.ipynb
-4. data_collect/get_repos_data.ipynb
-5. data_collect/get_starred_data.ipynb
-6. visualization/users_insights.ipynb
-7. visualization/repos_insights.ipynb
-8. visualization/starred_insights.ipynb
+| Passo | Descrição                                | Caminho do Notebook                              |
+|-----------|------------------------------------------|---------------------------------------------------|
+| 1         | Coleta de Dados: Obter IDs de Usuários  | data_collect/get_users_ids.ipynb                 |
+| 2         | Limpeza e Estruturação: Estruturar IDs   | cleaning_and_structuring/structure_ids.ipynb     |
+| 3         | Coleta de Dados: Obter Dados de Usuários | data_collect/get_users_data.ipynb                |
+| 4         | Coleta de Dados: Obter Dados de Repositórios | data_collect/get_repos_data.ipynb            |
+| 5         | Coleta de Dados: Obter Dados de Starred | data_collect/get_starred_data.ipynb              |
+| 6         | Visualização: Insights de Usuários       | visualization/users_insights.ipynb               |
+| 7         | Visualização: Insights de Repositórios   | visualization/repos_insights.ipynb               |
+| 8         | Visualização: Insights de Starred        | visualization/starred_insights.ipynb             |
+
 
 ## Contribuição
 
