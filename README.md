@@ -40,27 +40,7 @@ Some examples of obtained insights include:
 
 
 <div align='center'>
-  
-| Distribution of users by province  |
-|------------|
-| <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2023_06/number_of_registered_users_per_province.png?raw=true" width="800"> |
-
-</div>
-
-<div align='center'>
-  
-| Users entry per year      | Trending topics       |
-|------------|-------------|
-| <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2024_01/number_of_registered_users_per_year.png?raw=true" width="400"> | <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2024_01/trending_topics.png?raw=true" width="400"> |
-
-</div>
-
-<div align='center'>
-  
-| Users who liked national repositories      | Most used languages       |
-|------------|-------------|
-| <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2024_01/percentage_of_users_who_starred_at_least_1_mozambican_repository.png?raw=true" width="400"> | <img src="https://github.com/HercoZauZau/GitHub_Insights--Mozambique/blob/main/data/results/2024_01/trends_of_most_used_languages_in_repositories.png?raw=true" width="400"> |
-
+    <img src="./assets/img/Results.gif" width="100%" height="100%">
 </div>
 
 
