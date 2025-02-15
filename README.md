@@ -30,11 +30,14 @@ Rotineiramente, coletamos informações sobre repositórios, linguagens de progr
 
 **Nota:** Estes insights representam os dados de janeiro de 2025.
 
+<br>
+
+
 🔹 **Usuários e repositórios mais influentes**: Identificação dos perfis e projectos que têm maior engajamento e reconhecimento dentro da comunidade.
 
 <table border="1" width="80%" align="center" cellpadding="10" cellspacing="0">
     <thead>
-        <tr bgcolor="#333" style="color: white; text-align: center;">
+        <tr bgcolor="#f2f2f2" style="color: white; text-align: center;">
             <th>Usuário</th>
             <th>Estrelas (user)</th>
             <th>Repositório</th>
@@ -104,6 +107,8 @@ Rotineiramente, coletamos informações sobre repositórios, linguagens de progr
         </tr>
     </tbody>
 </table>
+
+_* A disposição das linhas não indica relação entre o repositório e o usuário_
 
 <br>
 <br>
