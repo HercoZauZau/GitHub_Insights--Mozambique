@@ -28,11 +28,83 @@ Rotineiramente, coletamos informações sobre repositórios, linguagens de progr
 
 ## 📊 Insights Gerados
 
+**Nota:** Estes insights representam os dados de janeiro de 2025.
+
 🔹 **Usuários e repositórios mais influentes**: Identificação dos perfis e projectos que têm maior engajamento e reconhecimento dentro da comunidade.
 
-<div align='center'>
-<img src="./assets/img/top users.PNG" width="80%" height="80%">
-</div>
+<table border="1" width="80%" align="center" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr bgcolor="#333" style="color: white; text-align: center;">
+            <th>Usuário</th>
+            <th>Estrelas (user)</th>
+            <th>Repositório</th>
+            <th>Estrelas (repo)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr align="center">
+            <td>americo</td>
+            <td>361</td>
+            <td>sqlifinder</td>
+            <td>343</td>
+        </tr>
+        <tr align="center" bgcolor="#f2f2f2">
+            <td>arnaldo-tomo</td>
+            <td>335</td>
+            <td>rtf-html-php</td>
+            <td>105</td>
+        </tr>
+        <tr align="center">
+            <td>henck</td>
+            <td>224</td>
+            <td>vue-selectize</td>
+            <td>77</td>
+        </tr>
+        <tr align="center" bgcolor="#f2f2f2">
+            <td>isneezy</td>
+            <td>223</td>
+            <td>open-weather-icons</td>
+            <td>69</td>
+        </tr>
+        <tr align="center">
+            <td>gmahota</td>
+            <td>181</td>
+            <td>dBASE.NET</td>
+            <td>67</td>
+        </tr>
+        <tr align="center" bgcolor="#f2f2f2">
+            <td>paymentsds</td>
+            <td>171</td>
+            <td>mpesa-js-sdk</td>
+            <td>62</td>
+        </tr>
+        <tr align="center">
+            <td>edilsonmatola</td>
+            <td>122</td>
+            <td>habitual-ecommerce-app-getx</td>
+            <td>49</td>
+        </tr>
+        <tr align="center" bgcolor="#f2f2f2">
+            <td>GraHms</td>
+            <td>116</td>
+            <td>mpesa-php-api</td>
+            <td>43</td>
+        </tr>
+        <tr align="center">
+            <td>JefferMarcelino</td>
+            <td>114</td>
+            <td>cakephp-gentelella-theme</td>
+            <td>43</td>
+        </tr>
+        <tr align="center" bgcolor="#f2f2f2">
+            <td>enoquetembe</td>
+            <td>92</td>
+            <td>pdf-generator-service</td>
+            <td>43</td>
+        </tr>
+    </tbody>
+</table>
+
 <br>
 <br>
 
