@@ -1,3 +1,8 @@
+<div align='center'>
+<img src="./assets/img/cover.png" width="100%" height="100%">
+</div>
+<br>
+
 # 📊 GitHub Insights Mozambique
 
 ### 🔍 Explorando o Ecossistema dos Desenvolvedores Moçambicanos
@@ -177,12 +182,3 @@ _* A disposição das linhas não indica relação entre o repositório e o usu�
 📌 Sugestões e feedbacks também são bem-vindos! Abra uma issue para relatar problemas ou sugerir melhorias.
 
 ---
-
-<div align='center'>
-<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmlxcWZ2cWp4NXJsbXN1dHd0MXltN2dsZWIzeDNpc2xwMTJ1ZXg0bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/22rDmweQGOtYO4p6oG/giphy.gif" width="100%" height="100%">
-</div>
-<br>
-
-### Junte-se a nós para fortalecer a comunidade de desenvolvedores moçambicanos e impulsionar a inovação no país! 🚀
-
-
