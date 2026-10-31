@@ -214,8 +214,8 @@ def execute_pipeline(root: Path, month: str, *, force: bool = False,
     Devolve False se o mês já estiver concluído e --force não for usado.
     """
     validate_month(month)
-    if not os.getenv('GITHUB_API_TOKEN'):
-        raise ValueError('GITHUB_API_TOKEN não definido. Usa .env local ou GitHub Actions Secrets.')
+    if not os.getenv('API_TOKEN'):
+        raise ValueError('API_TOKEN não definido. Usa .env local ou GitHub Actions Secrets.')
     if max_attempts < 1 or retry_delay < 0 or batch_delay < 0 or cell_timeout < 1:
         raise ValueError('Tentativas >= 1, intervalos >= 0 e timeout > 0.')
 
