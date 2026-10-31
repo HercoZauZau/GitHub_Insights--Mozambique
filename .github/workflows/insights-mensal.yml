@@ -1,0 +1,99 @@
+name: Actualização mensal GitHub Insights Mozambique
+
+on:
+  schedule:
+    - cron: '17 8 1 * *'
+      timezone: 'Africa/Maputo'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Mês a actualizar (AAAA_MM); vazio = mês anterior (Maputo)'
+        required: false
+        type: string
+      force:
+        description: 'Substituir um mês já concluído?'
+        required: false
+        default: false
+        type: boolean
+      dry_run:
+        description: 'Apenas mostrar o plano (não consultar API nem esperar 3 horas)'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-insights-actualizacao-mensal
+  cancel-in-progress: false
+
+jobs:
+  actualizacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - name: Obter código do repositório
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Instalar dependências e kernel Jupyter
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+          python -m ipykernel install --user --name python3 --display-name 'Python 3'
+
+      - name: Testar orquestração sem API
+        run: python -m pytest -q tests/test_pipeline.py
+
+      - name: Executar notebooks em três grupos de dois
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+          REQUESTED_MONTH: ${{ inputs.month }}
+          FORCE: ${{ inputs.force }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          EVENT_NAME: ${{ github.event_name }}
+        shell: bash
+        run: |
+          args=(--max-attempts 3 --retry-delay 300 --batch-delay 5400)
+          if [[ "$EVENT_NAME" == 'schedule' ]]; then
+            args+=(--scheduled)
+          elif [[ -n "$REQUESTED_MONTH" ]]; then
+            args+=(--month "$REQUESTED_MONTH")
+          fi
+          if [[ "$FORCE" == 'true' ]]; then
+            args+=(--force)
+          fi
+          if [[ "$DRY_RUN" == 'true' && "$EVENT_NAME" != 'schedule' ]]; then
+            args+=(--dry-run)
+          elif [[ -z "$GITHUB_API_TOKEN" ]]; then
+            echo 'O Secret GITHUB_API_TOKEN não foi configurado.' >&2
+            exit 1
+          fi
+          python scripts/run_pipeline.py "${args[@]}"
+
+      - name: Publicar os dados mensais
+        if: success() && (github.event_name == 'schedule' || inputs.dry_run != true)
+        shell: bash
+        env:
+          TARGET_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- data/
+          if git diff --cached --quiet; then
+            echo 'Sem resultados novos. Nenhum commit necessário.'
+            exit 0
+          fi
+          git commit -m 'data: actualizar GitHub Insights do mês'
+          # Actualizar a base, caso tenham ocorrido commits durante as pausas.
+          git fetch origin "$TARGET_BRANCH"
+          git rebase "origin/$TARGET_BRANCH"
+          git push origin "HEAD:$TARGET_BRANCH"
