@@ -58,7 +58,7 @@ jobs:
 
       - name: Executar notebooks em três grupos de dois
         env:
-          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+          API_TOKEN: ${{ secrets.API_TOKEN }}
           REQUESTED_MONTH: ${{ inputs.month }}
           FORCE: ${{ inputs.force }}
           DRY_RUN: ${{ inputs.dry_run }}
@@ -76,8 +76,8 @@ jobs:
           fi
           if [[ "$DRY_RUN" == 'true' && "$EVENT_NAME" != 'schedule' ]]; then
             args+=(--dry-run)
-          elif [[ -z "$GITHUB_API_TOKEN" ]]; then
-            echo 'O Secret GITHUB_API_TOKEN não foi configurado.' >&2
+          elif [[ -z "$API_TOKEN" ]]; then
+            echo 'O Secret API_TOKEN não foi configurado.' >&2
             exit 1
           fi
           python scripts/run_pipeline.py "${args[@]}"
