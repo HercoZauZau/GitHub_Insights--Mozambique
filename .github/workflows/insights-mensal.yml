@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: '17 8 1 * *'
       timezone: 'Africa/Maputo'
-
-    - cron: '30 9 1 * *'
-      timezone: 'Africa/Maputo'
   workflow_dispatch:
     inputs:
       month:
@@ -87,10 +84,20 @@ jobs:
         shell: bash
         env:
           TARGET_BRANCH: ${{ github.event.repository.default_branch }}
+          REQUESTED_MONTH: ${{ inputs.month }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- data/
+          # O mês de referência é o indicado manualmente ou o mês anterior em Maputo.
+          TARGET_MONTH="${REQUESTED_MONTH:-$(python -c 'import sys; sys.path.insert(0, "scripts"); from run_pipeline import previous_month, DEFAULT_TZ; from datetime import datetime; print(previous_month(datetime.now(DEFAULT_TZ)))')}"
+          shopt -s nullglob
+          csvs=(data/"$TARGET_MONTH"/*.csv)
+          if (( ${#csvs[@]} == 0 )); then
+            echo "Nenhum CSV encontrado em data/$TARGET_MONTH/; nada a publicar." >&2
+            exit 1
+          fi
+          # Forçar apenas os CSVs desse mês, mesmo quando .gitignore ignora *.csv.
+          git add -f -- "${csvs[@]}"
           if git diff --cached --quiet; then
             echo 'Sem resultados novos. Nenhum commit necessário.'
             exit 0
