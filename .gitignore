@@ -1,3 +1,25 @@
+# Credenciais e configuração local
 .env
-.ipynb_checkpoints
-check_token_limit.ipynb
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+
+# Ficheiros temporários
+.tmp/
+*.log
+
+# Artefactos da automação
+data/**/notebooks_executados/
+data/**/_SUCCESS.json
