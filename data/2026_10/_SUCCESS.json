@@ -1,0 +1,58 @@
+{
+  "month": "2026_10",
+  "started_at_utc": "2026-11-01T08:18:11.830350+00:00",
+  "finished_at_utc": "2026-11-01T11:24:19.200040+00:00",
+  "groups": [
+    {
+      "number": 1,
+      "notebooks": [
+        "01_get_users_ids.ipynb",
+        "02_get_users_data.ipynb"
+      ],
+      "mode": "sequential"
+    },
+    {
+      "number": 2,
+      "notebooks": [
+        "03_get_repos_data.ipynb",
+        "04_get_starred_data.ipynb"
+      ],
+      "mode": "parallel"
+    },
+    {
+      "number": 3,
+      "notebooks": [
+        "05_get_issues_data.ipynb",
+        "06_get_insights.ipynb"
+      ],
+      "mode": "sequential"
+    }
+  ],
+  "notebooks": [
+    "01_get_users_ids.ipynb",
+    "02_get_users_data.ipynb",
+    "03_get_repos_data.ipynb",
+    "04_get_starred_data.ipynb",
+    "05_get_issues_data.ipynb",
+    "06_get_insights.ipynb"
+  ],
+  "attempts_per_notebook": {
+    "01_get_users_ids.ipynb": 1,
+    "02_get_users_data.ipynb": 1,
+    "03_get_repos_data.ipynb": 1,
+    "04_get_starred_data.ipynb": 1,
+    "05_get_issues_data.ipynb": 1,
+    "06_get_insights.ipynb": 1
+  },
+  "retry_delay_seconds": 300,
+  "batch_delay_seconds": 5400,
+  "csv_files": [
+    "issues_data.csv",
+    "repos_data.csv",
+    "starred_repos_data.csv",
+    "starred_repos_users_ids.csv",
+    "users_data.csv",
+    "users_ids.csv"
+  ],
+  "status": "success"
+}
