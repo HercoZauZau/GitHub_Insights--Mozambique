@@ -1,5 +1,4 @@
 """Testes offline do orquestrador. Não contactam a API do GitHub."""
-import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import sys
@@ -103,21 +102,19 @@ def test_success_with_two_pauses_and_skip(example_repo, fake_execution):
     assert p.execute_pipeline(example_repo, '2026_11', max_attempts=3,
                               retry_delay=300, batch_delay=5400)
     dest = example_repo / 'data' / '2026_11'
-    metadata = json.loads((dest / '_SUCCESS.json').read_text(encoding='utf-8'))
     assert len(calls) == 6
     assert calls[:2] == list(p.NOTEBOOK_NAMES[:2])
     assert set(calls[2:4]) == set(p.NOTEBOOK_NAMES[2:4])
     assert calls[-2:] == list(p.NOTEBOOK_NAMES[4:])
     assert delays == [300] * 36  # duas pausas de 90 minutos em blocos de 5
-    assert metadata['attempts_per_notebook'] == dict.fromkeys(p.NOTEBOOK_NAMES, 1)
-    assert metadata['batch_delay_seconds'] == 5400
-    assert metadata['groups'][1]['mode'] == 'parallel'
-    assert (dest / 'notebooks_executados' / p.NOTEBOOK_NAMES[-1]).exists()
+    assert {x.name for x in dest.iterdir()} == set(fake_execution[2])
+    assert not (dest / 'notebooks_executados').exists()
+    assert not (dest / '_SUCCESS.json').exists()
     assert not p.execute_pipeline(example_repo, '2026_11', batch_delay=5400)
     assert len(calls) == 6
 
 
-def test_retry_only_failed_notebook(example_repo, fake_execution, monkeypatch):
+def test_retry_only_failed_notebook(example_repo, fake_execution, monkeypatch, capsys):
     calls, delays, outputs = fake_execution
     target = p.NOTEBOOK_NAMES[2]
     attempts = {target: 0}
@@ -135,9 +132,7 @@ def test_retry_only_failed_notebook(example_repo, fake_execution, monkeypatch):
     assert calls.count(target) == 1  # Falhou antes de criar dados, depois executou bem
     assert attempts[target] == 2
     assert delays == [300]
-    data = json.loads((example_repo / 'data' / '2026_11' / '_SUCCESS.json').read_text())
-    assert data['attempts_per_notebook'][target] == 2
-    assert data['attempts_per_notebook'][p.NOTEBOOK_NAMES[3]] == 1
+    assert f'{target} | tentativa 2/3' in capsys.readouterr().out
 
 
 def test_failure_does_not_publish_or_wait_after_failure(example_repo, fake_execution, monkeypatch):
@@ -198,7 +193,7 @@ def test_failed_parallel_notebook_cannot_publish(example_repo, fake_execution, m
 def test_force_failed_reprocessing_preserves_previous(example_repo, fake_execution, monkeypatch):
     calls, delays, _ = fake_execution
     p.execute_pipeline(example_repo, '2026_11', batch_delay=0)
-    old = (example_repo / 'data' / '2026_11' / '_SUCCESS.json').read_text()
+    old = (example_repo / 'data' / '2026_11' / 'users_data.csv').read_text()
     orig = p.execute_notebook_once
 
     def fail_last(name, *args):
@@ -210,7 +205,7 @@ def test_force_failed_reprocessing_preserves_previous(example_repo, fake_executi
     with pytest.raises(RuntimeError):
         p.execute_pipeline(example_repo, '2026_11', force=True, batch_delay=0,
                            max_attempts=1)
-    assert (example_repo / 'data' / '2026_11' / '_SUCCESS.json').read_text() == old
+    assert (example_repo / 'data' / '2026_11' / 'users_data.csv').read_text() == old
 
 
 def test_token_required(example_repo, monkeypatch):
@@ -236,3 +231,13 @@ def test_csv_validation_rejects_partial(example_repo, fake_execution, monkeypatc
                            retry_delay=300)
     assert delays == [300]
     assert not (example_repo / 'data' / '2026_11').exists()
+
+
+def test_partial_existing_month_requires_force(example_repo, fake_execution):
+    dest = example_repo / 'data' / '2026_11'
+    dest.mkdir()
+    (dest / '_SUCCESS.json').write_text('{}')
+    with pytest.raises(RuntimeError, match='CSV'):
+        p.execute_pipeline(example_repo, '2026_11', batch_delay=0)
+    assert p.execute_pipeline(example_repo, '2026_11', force=True, batch_delay=0)
+    assert {x.name for x in dest.iterdir()} == set(fake_execution[2])

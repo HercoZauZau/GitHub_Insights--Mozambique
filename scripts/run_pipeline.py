@@ -16,14 +16,13 @@ from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import csv
-import json
 import os
 import re
 import shutil
 import sys
 import tempfile
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -123,8 +122,9 @@ def execute_notebook_once(name: str, work_notebooks: Path, completed_dir: Path,
         resources={'metadata': {'path': str(work_notebooks)}},
         allow_errors=False,
     )
-    executed = client.execute()
-    nbformat.write(executed, completed_dir / name)
+    # Executar as células sem gravar outra cópia do notebook (nem em data/, nem temporariamente).
+    # Apenas os CSVs exportados pelas células serão preservados.
+    client.execute()
 
 
 def run_with_retries(name: str, work_notebooks: Path, stage: Path, completed_dir: Path,
@@ -211,7 +211,7 @@ def execute_pipeline(root: Path, month: str, *, force: bool = False,
                      cell_timeout: int = 3600) -> bool:
     """Publica de forma atómica em data/AAAA_MM só quando TODOS terminarem.
 
-    Devolve False se o mês já estiver concluído e --force não for usado.
+    Devolve False se todos os CSVs já existirem e --force não for usado.
     """
     validate_month(month)
     if not os.getenv('API_TOKEN'):
@@ -225,14 +225,22 @@ def execute_pipeline(root: Path, month: str, *, force: bool = False,
     data_root = root / 'data'
     data_root.mkdir(exist_ok=True)
     destination = data_root / month
-    manifest = destination / '_SUCCESS.json'
-    if manifest.exists() and not force:
-        print(f'[SKIP] {month} já concluído. Para repetir, usa --force.', flush=True)
-        return False
     if destination.exists() and not force:
-        raise RuntimeError(f'{destination} já existe sem _SUCCESS.json; usa --force.')
+        # Como já não publicamos _SUCCESS.json, verificamos os ficheiros esperados.
+        # A publicação é atómica: a pasta final só é substituída após sucesso dos 6.
+        try:
+            for specs in EXPECTED_CSV.values():
+                for csv_name, columns, required_rows in specs:
+                    validate_csv(destination / csv_name, columns, required_rows)
+        except (FileNotFoundError, ValueError) as exc:
+            raise RuntimeError(
+                f'{destination} já existe mas os CSVs estão incompletos: {exc}. '
+                'Para recuperar o mês, executa com --force.'
+            ) from exc
+        print(f'[SKIP] {month} já contém todos os CSVs esperados. '
+              'Para repetir, usa --force.', flush=True)
+        return False
 
-    started = datetime.now(timezone.utc)
     attempts_per_notebook = {}
     with tempfile.TemporaryDirectory(prefix='gh-insights-') as temp_name:
         work_root = Path(temp_name)
@@ -240,7 +248,7 @@ def execute_pipeline(root: Path, month: str, *, force: bool = False,
         work_notebooks.mkdir()
         stage = work_root / 'data' / month
         stage.mkdir(parents=True)
-        completed_dir = stage / 'notebooks_executados'
+        completed_dir = work_root / 'notebooks_executados'
         completed_dir.mkdir()
         for name in names:
             shutil.copy2(source_dir / name, work_notebooks / name)
@@ -262,21 +270,8 @@ def execute_pipeline(root: Path, month: str, *, force: bool = False,
             else:
                 os.environ['DIR_NAME'] = prior_dir
 
-        csvs = sorted(p.name for p in stage.glob('*.csv'))
-        (stage / '_SUCCESS.json').write_text(json.dumps({
-            'month': month,
-            'started_at_utc': started.isoformat(),
-            'finished_at_utc': datetime.now(timezone.utc).isoformat(),
-            'groups': [{'number': idx, 'notebooks': list(group),
-                        'mode': 'parallel' if idx == 2 else 'sequential'}
-                       for idx, group in enumerate(groups, 1)],
-            'notebooks': names,
-            'attempts_per_notebook': attempts_per_notebook,
-            'retry_delay_seconds': retry_delay,
-            'batch_delay_seconds': batch_delay,
-            'csv_files': csvs,
-            'status': 'success',
-        }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        # Não gerar _SUCCESS.json: data/ terá apenas os CSVs exportados.
+        # Os CSVs já foram validados em cada notebook antes de chegar aqui.
 
         with tempfile.TemporaryDirectory(prefix='.backup-', dir=data_root) as backup_tmp:
             backup = Path(backup_tmp) / 'previous'
