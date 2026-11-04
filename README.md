@@ -7,17 +7,17 @@
 
 ### 🔍 Explorando o Ecossistema dos Desenvolvedores Moçambicanos
 
----
+<br>
 
 ## 📌 Sobre o Projecto
 
-O **GitHub Insights Mozambique** é um projceto dedicado à coleta, análise e monitoramento de dados públicos de usuários moçambicanos no GitHub. O objectivo é entender melhor a dinâmica da comunidade local de desenvolvedores, identificar padrões, tendências tecnológicas e destacar os principais contribuidores e projectos do país.
+O **GitHub Insights Mozambique** é um projecto dedicado à coleta, análise e monitorização de dados públicos de usuários moçambicanos no GitHub. O objectivo é entender melhor a dinâmica da comunidade local de desenvolvedores, identificar padrões, tendências tecnológicas e destacar os principais contribuidores e projectos do país.
 
-Rotineiramente, coletamos informações sobre repositórios, linguagens de programação, curtidas e novas adesões à plataforma para construir um panorama actualizado do ecossistema GitHub em Moçambique.
+Rotineiramente, coletamos informações sobre repositórios, linguagens de programação, estrelas e novas adesões à plataforma para construir um panorama actualizado do ecossistema GitHub em Moçambique.
 
----
+<br>
 
-## 🎯 Objectivos
+## 🎯 Objetivos
 
 ✅ **Mapear o crescimento da comunidade** de desenvolvedores moçambicanos no GitHub ao longo do tempo.
 
@@ -29,14 +29,9 @@ Rotineiramente, coletamos informações sobre repositórios, linguagens de progr
 
 ✅ **Fornecer insights valiosos** que possam incentivar colaboração e networking entre os desenvolvedores.
 
----
-
-## 📊 Insights Gerados
-
-**Nota:** Estes insights representam os dados de janeiro de 2025.
-
 <br>
 
+## 📊 Insights Gerados
 
 🔹 **Usuários e repositórios mais influentes**: Identificação dos perfis e projectos que têm maior engajamento e reconhecimento dentro da comunidade.
 
@@ -126,7 +121,7 @@ _* A disposição das linhas não indica relação entre o repositório e o usu�
 <br>
 <br>
 
-🔹 **Evolução da criação de repositórios**: Monitoramento do número de repositórios criados mensalmente e anualmente.
+🔹 **Evolução da criação de repositórios**: Monitorização do número de repositórios criados mensalmente e anualmente.
 
 <div align='center'>
 <img src="./assets/img/criacao de repos.png" width="100%" height="100%">
@@ -144,7 +139,7 @@ _* A disposição das linhas não indica relação entre o repositório e o usu�
 
 🔹 **Outros**: Visite os notebooks para conhecer e/ou gerar mais insights dos dados.
 
----
+<br>
 
 ## 📂 Estrutura do Projecto
 
@@ -158,7 +153,7 @@ _* A disposição das linhas não indica relação entre o repositório e o usu�
 
 📄 **env.example** - Exemplar de Variáveis de Ambiente Necessárias.
 
----
+<br>
 
 ## ⚠️ Limitações do projecto
 
@@ -168,7 +163,7 @@ _* A disposição das linhas não indica relação entre o repositório e o usu�
 
 🔸 **Restrições da API do GitHub**: A coleta está sujeita a limitações de taxa de requisições e disponibilidade de dados pela API.
 
----
+<br>
 
 ## 🛠 Como Contribuir
 
